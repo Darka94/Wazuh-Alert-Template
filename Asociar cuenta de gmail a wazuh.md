@@ -28,6 +28,10 @@ inet_protocols = ipv4 #This avoids IPv6 connection with a 'Network unreachable' 
 
 ### 5.- Configurar /etc/postfix/sasl_passwd
 echo '[smtp.gmail.com]:587 <USER>@wazuh.com:xxxx xxxx xxxx xxxx' > /etc/postfix/sasl_passwd #PASSWORD YOU'VE GOT FROM GOOGLE 'APP PASSWORDS'
+postmap /etc/postfix/sasl_passwd
+chmod 400 /etc/postfix/sasl_passwd
+chown root:root /etc/postfix/sasl_passwd /etc/postfix/sasl_passwd.db
+chmod 0600 /etc/postfix/sasl_passwd /etc/postfix/sasl_passwd.db
 
 ### 6.- plicar el cambio, proteger los archivos y reiniciar el servicio:
 postmap /etc/postfix/sasl_passwd
